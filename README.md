@@ -11,12 +11,20 @@ In this situation, there is a low cost or penalty for type-I errors i.e., false 
 
 Besides comparing the performance of the classifiers, we also wish to analize the imporatnce of the features and provide some interpretation so to improve the efficiency for future direct markinging methods. 
 
+**Data Exploration and Feature Engineering:**
+
 Correlation analysis indicates that duration, pdays, previous, emp.var.rate, euribor3m, and nr.employment correlates highest with target variable. 
+
+[./PCA.png]
 
 Given that there are 53 features we use PCA do see if we can reduce the number of dimensions. The features are scaled by the mean and standard deviations. Based on the cummlative explain variance for all 53 principal components, we decided to grid search over 24, 32, 36 number of principal components to capture at least 75% to 95% of all the variance in the features. The significance, here is that we reduce the run time for training the classification models by using at least 17 fewer features.  As a test using some of the faster classifier models (not SVM), we also consider all original 53 untransformed features.
 
 We hold out 30% of the dataset for later testing/scoring and train with 70%. We test the LogisticRegression, KNeighborsClassifier, SVM, and DecisionTreeClassifier. The hyperparameters for each of the classifiers were determined using GridSearchCV with 5-fold cross-validation. The scores are in the table below.
 
+[./SVM.png]
+
+<P>
+<code>
                    CLF  PCA_ncomp  train_score  accuracy  precision  recall       f1  specificity    auc  fit_time
 4                  SVC       36.0        0.825     0.896      0.544   0.443   0.489        0.953  0.866    60.412
 6        DecisionTree2        NaN        0.590     0.907      0.641   0.390   0.485        0.972  0.865     0.088  
@@ -25,12 +33,16 @@ We hold out 30% of the dataset for later testing/scoring and train with 70%. We 
 0   LogisticRegression       36.0        0.459     0.907      0.662   0.348   0.456        0.977  0.914     0.175 
 2           KNeighbors       32.0        0.453     0.899      0.615   0.273   0.378        0.978  0.831     0.141  
 3          KNeighbors2        NaN        0.442     0.898      0.604   0.265   0.368        0.978  0.821     0.020 
+</code>
+</P>
+
 
    
 **Findings:**
 
 1. PCA reduced the number of features needed to train classifiers mainly reducing the number of non-important features by about 17 (53 to 36). The percent cumlative variance explaination was 95% with number of principal componets at 36. 
 
+[./Precision-Recall-Curve.png]
 
 2. SVM and Decision Tree Classifier performed the best f1-score. SVM took about 50 times slower than Decision Tree Classifier. 
 
