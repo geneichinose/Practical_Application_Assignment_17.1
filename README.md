@@ -17,11 +17,15 @@ Correlation analysis indicates that duration, pdays, previous, emp.var.rate, eur
 
 ![PCA.png](./PCA.png)
 
+Cumlative Variance Explained versus principal components. 
+
 Given that there are 53 features we use PCA do see if we can reduce the number of dimensions. The features are scaled by the mean and standard deviations. Based on the cummlative explain variance for all 53 principal components, we decided to grid search over 24, 32, 36 number of principal components to capture at least 75% to 95% of all the variance in the features. The significance, here is that we reduce the run time for training the classification models by using at least 17 fewer features.  As a test using some of the faster classifier models (not SVM), we also consider all original 53 untransformed features.
 
 We hold out 30% of the dataset for later testing/scoring and train with 70%. We test the LogisticRegression, KNeighborsClassifier, SVM, and DecisionTreeClassifier. The hyperparameters for each of the classifiers were determined using GridSearchCV with 5-fold cross-validation. The scores are in the table below.
 
 ![SVM.png](./SVM.png)
+
+Figure above shows the confusion matrix, ROC curve, and Precision-Recall curve with optimal SVM Classifier. 
 
 <P>
 <code>
@@ -44,10 +48,14 @@ We hold out 30% of the dataset for later testing/scoring and train with 70%. We 
 
 ![Precision-Recall-Curve.png](Precision-Recall-Curve.png)
 
-2. SVM and Decision Tree Classifier performed the best f1-score. SVM took about 50 times slower than Decision Tree Classifier. 
+2. SVM and Decision Tree Classifier performed the best f1-score (see figure above and Table with scores). SVM took about 50 times slower than Decision Tree Classifier. 
 
 
 3. We used the GridsearchCV for the best hyperparameters. These were used with the Decision Tree Classifier to estimate the Gini-feature Importance for the 53 features.  We find that the feature importance is the highest for the duration of the phone marketing calls, the number of days previous contact, and age. The months also factor in with March, October and June being most important. This is similar finding with the Moro and Laureano paper. 
+
+![feature-importance.png](feature-importance.png)
+
+Above is the DecisionTreeClassifier Gini-Feature importance as a function of the features. 
 
 **Future work:**
 1. The next step is to examine the thresholds which here are assumed to be probability of 0.5. 
