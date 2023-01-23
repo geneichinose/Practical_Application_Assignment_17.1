@@ -68,13 +68,15 @@ Figure. The confusion matrix, ROC curve, and Precision-Recall curve with optimal
 
 ![df_scores.png](./df_scores.png)
 
+
+![Precision-Recall-Curve.png](Precision-Recall-Curve.png)
+
+Figure. The precision-recall curve for top performing classifiers.  Note, KNeighbors metrics were poor and was left out of the plot to save space. 
+
 ## Findings:
 
 1. PCA reduced the number of features needed to train classifiers, reducing the number of non-important features by about 17 (53 to 36 principal components). The percent cumulative variance explanation was 95% with number of principal components at 36. 
 
-![Precision-Recall-Curve.png](Precision-Recall-Curve.png)
-
-Figure. The precision-recall curve for top performing classifiers.  Note, KNeighbors was left out. 
 
 2. SVM and Decision Tree Classifier performed the best with the highest f1-scores (see PRC-Figure above and Table with scores). SVM took about 50 times longer than the Decision Tree Classifier. 
 
