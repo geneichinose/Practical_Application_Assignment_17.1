@@ -15,12 +15,42 @@ Besides comparing the performance of the classifiers, we also wish to analize th
 
 Correlation analysis indicates that duration, pdays, previous, emp.var.rate, euribor3m, and nr.employment correlates highest with target variable. 
 
+**features**
 <P>
 <code>
 features = ['age', 'job', 'marital', 'education', 'default', 'housing', 'loan', 'contact', 
             'month', 'duration', 'campaign', 'pdays', 'previous', 'poutcome' ]
 </code>
 </P>
+
+**List of features including onehotencoding**
+<code>
+       'encoder__job_admin.', 'encoder__job_blue-collar',
+       'encoder__job_entrepreneur', 'encoder__job_housemaid',
+       'encoder__job_management', 'encoder__job_retired',
+       'encoder__job_self-employed', 'encoder__job_services',
+       'encoder__job_student', 'encoder__job_technician',
+       'encoder__job_unemployed', 'encoder__job_unknown',
+       'encoder__marital_divorced', 'encoder__marital_married',
+       'encoder__marital_single', 'encoder__marital_unknown',
+       'encoder__education_basic.4y', 'encoder__education_basic.6y',
+       'encoder__education_basic.9y', 'encoder__education_high.school',
+       'encoder__education_illiterate',
+       'encoder__education_professional.course',
+       'encoder__education_university.degree', 'encoder__education_unknown',
+       'encoder__default_no', 'encoder__default_unknown',
+       'encoder__default_yes', 'encoder__housing_no',
+       'encoder__housing_unknown', 'encoder__housing_yes', 'encoder__loan_no',
+       'encoder__loan_unknown', 'encoder__loan_yes',
+       'encoder__contact_cellular', 'encoder__contact_telephone',
+       'encoder__month_apr', 'encoder__month_aug', 'encoder__month_dec',
+       'encoder__month_jul', 'encoder__month_jun', 'encoder__month_mar',
+       'encoder__month_may', 'encoder__month_nov', 'encoder__month_oct',
+       'encoder__month_sep', 'encoder__poutcome_failure',
+       'encoder__poutcome_nonexistent', 'encoder__poutcome_success',
+       'remainder__age', 'remainder__duration', 'remainder__campaign',
+       'remainder__pdays', 'remainder__previous'
+</code>
 
 ![PCA.png](./PCA.png)
 
