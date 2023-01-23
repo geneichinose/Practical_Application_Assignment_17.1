@@ -11,7 +11,7 @@ The metrics used in this study is based two types of errors. There is a low cost
 
 Besides comparing the performance of the classifiers, we also wish to analyze the importance of the features and provide some interpretation so to improve the efficiency for future direct marketing methods.
 
-**Data Exploration and Feature Engineering:**
+## Data Exploration and Feature Engineering:**
 
 Correlation analysis indicates that duration, pdays, previous, emp.var.rate, euribor3m, and nr.employment correlates highest with target variable. 
 
@@ -88,4 +88,3 @@ Figure. The DecisionTreeClassifier Gini-Feature importance as a function of the 
 ## Future work:
 1. The next step is to examine the thresholds which here are assumed to be probability of 0.5. 
 2. We also did not use the social economic variables given that they would not be available for future predictions.  However, it would be interesting to included them to see if they give any improvement in the classifiers.
-
