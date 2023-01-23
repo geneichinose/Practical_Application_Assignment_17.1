@@ -15,6 +15,13 @@ Besides comparing the performance of the classifiers, we also wish to analize th
 
 Correlation analysis indicates that duration, pdays, previous, emp.var.rate, euribor3m, and nr.employment correlates highest with target variable. 
 
+<P>
+<code>
+features = ['age', 'job', 'marital', 'education', 'default', 'housing', 'loan', 'contact', 
+            'month', 'duration', 'campaign', 'pdays', 'previous', 'poutcome' ]
+</code>
+</P>
+
 ![PCA.png](./PCA.png)
 
 Cumlative Variance Explained versus principal components. 
