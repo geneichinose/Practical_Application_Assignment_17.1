@@ -70,13 +70,13 @@ Figure. The confusion matrix, ROC curve, and Precision-Recall curve with optimal
 
 ## Findings:
 
-1. PCA reduced the number of features needed to train classifiers mainly reducing the number of non-important features by about 17 (53 to 36). The percent cumulative variance explanation was 95% with number of principal components at 36. 
+1. PCA reduced the number of features needed to train classifiers, reducing the number of non-important features by about 17 (53 to 36 principal components). The percent cumulative variance explanation was 95% with number of principal components at 36. 
 
 ![Precision-Recall-Curve.png](Precision-Recall-Curve.png)
 
 Figure. The precision-recall curve for top performing classifiers.  Note, KNeighbors was left out. 
 
-2. SVM and Decision Tree Classifier performed the best f1-score (see figure above and Table with scores). SVM took about 50 times slower than Decision Tree Classifier. 
+2. SVM and Decision Tree Classifier performed the best with the highest f1-scores (see PRC-Figure above and Table with scores). SVM took about 50 times longer than the Decision Tree Classifier. 
 
 
 3. We used the GridsearchCV for the best hyperparameters. These were used with the Decision Tree Classifier to estimate the Gini-feature Importance for the 53 features.  We find that the feature importance is the highest for the duration of the phone marketing calls, the number of days previous contact, and age. The months also factor in with March, October and June being most important. This is similar finding with the Moro and Laureano paper. 
