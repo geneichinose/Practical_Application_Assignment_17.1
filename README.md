@@ -1,7 +1,7 @@
 # Practical_Application_Assignment_17.1
 
 
-**Business Objectives:**
+## Business Objectives:
 
 Direct marketing campaigns are an inexpensive means to increase sales; however, the performance of direct phone marketing is largely unknown. 
 
@@ -15,7 +15,8 @@ Besides comparing the performance of the classifiers, we also wish to analyze th
 
 Correlation analysis indicates that duration, pdays, previous, emp.var.rate, euribor3m, and nr.employment correlates highest with target variable. 
 
-**Features:**
+### Features:
+
 <P>
 <code>
 features = ['age', 'job', 'marital', 'education', 'default', 'housing', 'loan', 'contact', 
@@ -23,7 +24,8 @@ features = ['age', 'job', 'marital', 'education', 'default', 'housing', 'loan', 
 </code>
 </P>
 
-**List of features including onehotencoding**
+### List of features including onehotencoding:
+
 <code>
        'encoder__job_admin.', 'encoder__job_blue-collar',
        'encoder__job_entrepreneur', 'encoder__job_housemaid',
@@ -54,23 +56,25 @@ features = ['age', 'job', 'marital', 'education', 'default', 'housing', 'loan', 
 
 ![PCA.png](./PCA.png)
 
-Cumulative Variance Explained versus principal components. 
+Figure. Cumulative Variance Explained versus principal components. 
 
 Given that there are 53 features we use PCA do see if we can reduce the number of dimensions. The features are scaled by the mean and standard deviations. Based on the cumulative variance explained for all 53 principal components, we decided to grid search over 24, 32, 36 number of principal components to capture at least 75% to 95% of all the variance in the features. The significance, here is that we reduce the run time for training the classification models by using at least 17 fewer features.  As a test using some of the faster classifier models (not SVM), we also consider all original 53 untransformed features.
 
 ![SVM.png](./SVM.png)
 
-Figure above shows the confusion matrix, ROC curve, and Precision-Recall curve with optimal SVM Classifier. 
+Figure. The confusion matrix, ROC curve, and Precision-Recall curve with optimal the Support Vector Machine SVC classifier. 
 
-**Table of scores**
+### Table of scores: 
 
 ![df_scores.png](./df_scores.png)
 
-**Findings:**
+## Findings:
 
 1. PCA reduced the number of features needed to train classifiers mainly reducing the number of non-important features by about 17 (53 to 36). The percent cumulative variance explanation was 95% with number of principal components at 36. 
 
 ![Precision-Recall-Curve.png](Precision-Recall-Curve.png)
+
+Figure. The precision-recall curve for top performing classifiers.  Note, KNeighbors was left out. 
 
 2. SVM and Decision Tree Classifier performed the best f1-score (see figure above and Table with scores). SVM took about 50 times slower than Decision Tree Classifier. 
 
@@ -79,9 +83,9 @@ Figure above shows the confusion matrix, ROC curve, and Precision-Recall curve w
 
 ![feature-importance.png](feature-importance.png)
 
-Above is the DecisionTreeClassifier Gini-Feature importance as a function of the features. 
+Figure. The DecisionTreeClassifier Gini-Feature importance as a function of the features. 
 
-**Future work:**
+## Future work:
 1. The next step is to examine the thresholds which here are assumed to be probability of 0.5. 
 2. We also did not use the social economic variables given that they would not be available for future predictions.  However, it would be interesting to included them to see if they give any improvement in the classifiers.
 
