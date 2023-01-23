@@ -3,19 +3,19 @@
 
 **Business Objectives:**
 
-Direct marketing campaigns are an inexpensive means to increase sales; however, the performance of direct phone marketing is largely unknown.
+Direct marketing campaigns are an inexpensive means to increase sales; however, the performance of direct phone marketing is largely unknown. 
 
-In addition to performance, more information is need for improvement in efficiency of direct phone marketing. The goal is to examine the peformance of multiple classifier methods and find the one that returns the best metrics.
+The first objective is to build multiple classifier methods that will predict whether a customer contact over the phone will result in a sale of banking deposit products. The features used to train the classifier methods is from a Portugal dataset used in a previous study by Moro and Laureano. The goal is to examine the performance of multiple classifier methods based on a set of metrics.
 
-In this situation, there is a low cost or penalty for type-I errors i.e., false alarms. In this case we're targeting customers with phone calls who are likely to already purchase products.  This is inefficient and maximizing precision will reduce costs and being a nuisance to buying customers.  Type-II errors or missed detections is more detremental due to missing sales oppurtunities that would help. Here we wish to maximize recall score. Since there is a large class imbalance, accuracy score is not the best metric given that most of the feature space is of the class 0 or 'no sale'. We therefore optimize for maximum f1-score (combination of recall and precision) but utimately also want to pick methods that optimize recall.
+The metrics used in this study is based two types of errors. There is a low cost or penalty for type-I errors i.e., false alarms. In this case we're targeting customers with phone calls who are likely to already purchase banking products.  This is inefficient and maximizing precision will reduce costs and being a nuisance to buying customers.  Type-II errors or missed detections is more detrimental due to missing sales opportunities. Here we wish to maximize recall score. Since there is a large class imbalance, accuracy score is not the best metric given that most of the feature space is of the class 0 or 'no sale', i.e., good at predicting false-positives but not at true-positives. We therefore optimize for maximum f1-score (a combination of recall and precision) but ultimately also want to pick methods that optimize recall in addition to other metrics.
 
-Besides comparing the performance of the classifiers, we also wish to analize the imporatnce of the features and provide some interpretation so to improve the efficiency for future direct markinging methods. 
+Besides comparing the performance of the classifiers, we also wish to analyze the importance of the features and provide some interpretation so to improve the efficiency for future direct marketing methods.
 
 **Data Exploration and Feature Engineering:**
 
 Correlation analysis indicates that duration, pdays, previous, emp.var.rate, euribor3m, and nr.employment correlates highest with target variable. 
 
-**features**
+**Features:**
 <P>
 <code>
 features = ['age', 'job', 'marital', 'education', 'default', 'housing', 'loan', 'contact', 
@@ -54,11 +54,9 @@ features = ['age', 'job', 'marital', 'education', 'default', 'housing', 'loan', 
 
 ![PCA.png](./PCA.png)
 
-Cumlative Variance Explained versus principal components. 
+Cumulative Variance Explained versus principal components. 
 
-Given that there are 53 features we use PCA do see if we can reduce the number of dimensions. The features are scaled by the mean and standard deviations. Based on the cummlative explain variance for all 53 principal components, we decided to grid search over 24, 32, 36 number of principal components to capture at least 75% to 95% of all the variance in the features. The significance, here is that we reduce the run time for training the classification models by using at least 17 fewer features.  As a test using some of the faster classifier models (not SVM), we also consider all original 53 untransformed features.
-
-We hold out 30% of the dataset for later testing/scoring and train with 70%. We test the LogisticRegression, KNeighborsClassifier, SVM, and DecisionTreeClassifier. The hyperparameters for each of the classifiers were determined using GridSearchCV with 5-fold cross-validation. The scores are in the table below.
+Given that there are 53 features we use PCA do see if we can reduce the number of dimensions. The features are scaled by the mean and standard deviations. Based on the cumulative explain variance for all 53 principal components, we decided to grid search over 24, 32, 36 number of principal components to capture at least 75% to 95% of all the variance in the features. The significance, here is that we reduce the run time for training the classification models by using at least 17 fewer features.  As a test using some of the faster classifier models (not SVM), we also consider all original 53 untransformed features.
 
 ![SVM.png](./SVM.png)
 
@@ -68,10 +66,9 @@ Figure above shows the confusion matrix, ROC curve, and Precision-Recall curve w
 
 ![df_scores.png](./df_scores.png)
 
-   
 **Findings:**
 
-1. PCA reduced the number of features needed to train classifiers mainly reducing the number of non-important features by about 17 (53 to 36). The percent cumlative variance explaination was 95% with number of principal componets at 36. 
+1. PCA reduced the number of features needed to train classifiers mainly reducing the number of non-important features by about 17 (53 to 36). The percent cumulative variance explanation was 95% with number of principal components at 36. 
 
 ![Precision-Recall-Curve.png](Precision-Recall-Curve.png)
 
@@ -86,4 +83,5 @@ Above is the DecisionTreeClassifier Gini-Feature importance as a function of the
 
 **Future work:**
 1. The next step is to examine the thresholds which here are assumed to be probability of 0.5. 
-2. We also did not use the social economic variables given that they would not be available for future predictions.  However, it would be interesting to included them to see if they give any improvement in the classifiers. 
+2. We also did not use the social economic variables given that they would not be available for future predictions.  However, it would be interesting to included them to see if they give any improvement in the classifiers.
+
