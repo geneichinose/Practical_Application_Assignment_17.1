@@ -27,19 +27,9 @@ We hold out 30% of the dataset for later testing/scoring and train with 70%. We 
 
 Figure above shows the confusion matrix, ROC curve, and Precision-Recall curve with optimal SVM Classifier. 
 
-<P>
-<code>
-                   CLF  PCA_ncomp  train_score  accuracy  precision  recall       f1  specificity    auc  fit_time
-4                  SVC       36.0        0.825     0.896      0.544   0.443   0.489        0.953  0.866    60.412
-6        DecisionTree2        NaN        0.590     0.907      0.641   0.390   0.485        0.972  0.865     0.088  
-5         DecisionTree       36.0        0.752     0.889      0.509   0.434   0.469        0.947  0.766     0.878
-1  LogisticRegression2        NaN        0.462     0.908      0.673   0.358   0.467        0.978  0.915     0.058   
-0   LogisticRegression       36.0        0.459     0.907      0.662   0.348   0.456        0.977  0.914     0.175 
-2           KNeighbors       32.0        0.453     0.899      0.615   0.273   0.378        0.978  0.831     0.141  
-3          KNeighbors2        NaN        0.442     0.898      0.604   0.265   0.368        0.978  0.821     0.020 
-</code>
-</P>
+**Table of scores**
 
+![df_scores.png](./df_scores.png)
 
    
 **Findings:**
